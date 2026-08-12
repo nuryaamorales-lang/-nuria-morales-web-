@@ -1,5 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 const year = new Date().getFullYear();
+const contacto = (await getCollection('contacto'))[0].data;
 ---
 <footer class="site-footer">
   <div class="wrap">
@@ -17,9 +19,9 @@ const year = new Date().getFullYear();
         </ul>
       </nav>
       <div class="site-footer__social">
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:nuryaa.morales@gmail.com">Email</a>
+        {contacto.linkedin && <a href={contacto.linkedin} target="_blank" rel="noopener">LinkedIn</a>}
+        {contacto.instagram && <a href={contacto.instagram} target="_blank" rel="noopener">Instagram</a>}
+        <a href={`mailto:${contacto.email}`}>Email</a>
       </div>
     </div>
     <hr class="rule" />

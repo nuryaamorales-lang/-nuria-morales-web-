@@ -30,8 +30,9 @@ const insights = defineCollection({
 });
 
 const settings = defineCollection({
-  loader: glob({ pattern: '**/*.yaml', base: './src/content/settings' }),
+  loader: glob({ pattern: 'home.yaml', base: './src/content/settings' }),
   schema: z.object({
+    heroImage: z.string(),
     eyebrow: z.string(),
     heroTitle: z.string(),
     heroClaim: z.string(),
@@ -45,4 +46,13 @@ const settings = defineCollection({
   }),
 });
 
-export const collections = { proyectos, insights, settings };
+const contacto = defineCollection({
+  loader: glob({ pattern: 'contacto.yaml', base: './src/content/settings' }),
+  schema: z.object({
+    email: z.string(),
+    linkedin: z.string().optional(),
+    instagram: z.string().optional(),
+  }),
+});
+
+export const collections = { proyectos, insights, settings, contacto };

@@ -15,7 +15,7 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
 >
   <!-- 01 HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style={`background-image:url('${home.heroImage}')`}></div>
     <div class="hero__overlay"></div>
     <div class="hero__scrim-top"></div>
     <div class="hero__scrim-bottom"></div>
@@ -199,7 +199,6 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
   .hero__bg {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
-    background-image: url('/images/hero-bg.jpg');
     background-size: cover;
     background-position: 80% 68%;
     filter: brightness(0.78) saturate(0.85);

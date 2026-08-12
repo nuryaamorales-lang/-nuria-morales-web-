@@ -15,6 +15,7 @@ collections:
         label: "Textos principales"
         file: "src/content/settings/home.yaml"
         fields:
+          - { label: "Foto de fondo del hero", name: "heroImage", widget: "image" }
           - { label: "Etiqueta superior (eyebrow)", name: "eyebrow", widget: "string" }
           - { label: "Título hero (NURIA MORALES)", name: "heroTitle", widget: "string" }
           - { label: "Frase del hero", name: "heroClaim", widget: "text" }
@@ -25,6 +26,13 @@ collections:
           - { label: "Título Sobre mí", name: "aboutTitle", widget: "text" }
           - { label: "Texto Sobre mí", name: "aboutBody", widget: "text" }
           - { label: "Texto del CTA final", name: "finalCtaText", widget: "text" }
+      - name: "contacto"
+        label: "Email y redes sociales"
+        file: "src/content/settings/contacto.yaml"
+        fields:
+          - { label: "Email de contacto", name: "email", widget: "string" }
+          - { label: "URL de LinkedIn", name: "linkedin", widget: "string", required: false, hint: "Déjalo vacío si aún no lo tienes" }
+          - { label: "URL de Instagram", name: "instagram", widget: "string", required: false, hint: "Déjalo vacío si aún no lo tienes" }
 
   - name: "insights"
     label: "Insights (Blog)"
