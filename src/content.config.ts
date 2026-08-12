@@ -29,4 +29,20 @@ const insights = defineCollection({
   }),
 });
 
-export const collections = { proyectos, insights };
+const settings = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/settings' }),
+  schema: z.object({
+    eyebrow: z.string(),
+    heroTitle: z.string(),
+    heroClaim: z.string(),
+    statementLine1: z.string(),
+    statementLine2: z.string(),
+    problemTitle: z.string(),
+    problemBody: z.string(),
+    aboutTitle: z.string(),
+    aboutBody: z.string(),
+    finalCtaText: z.string(),
+  }),
+});
+
+export const collections = { proyectos, insights, settings };

@@ -7,6 +7,7 @@ import { getCollection } from 'astro:content';
 
 const proyectos = (await getCollection('proyectos')).sort((a, b) => a.data.order - b.data.order).slice(0, 2);
 const insights = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
 ---
 <BaseLayout
   title="Consultora Estratégica de Marketing"
@@ -15,12 +16,13 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
   <!-- 01 HERO -->
   <section class="hero">
     <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
     <div class="hero__scrim-top"></div>
     <div class="hero__scrim-bottom"></div>
     <div class="wrap hero__inner">
-      <p class="eyebrow">Consultora Estratégica de Marketing</p>
-      <h1 class="display hero__title">NURIA MORALES</h1>
-      <p class="hero__claim">Antes de hacer más marketing, hay que entender mejor el negocio.</p>
+      <p class="eyebrow">{home.eyebrow}</p>
+      <h1 class="display hero__title">{home.heroTitle}</h1>
+      <p class="hero__claim">{home.heroClaim}</p>
       <div class="hero__actions">
         <a href="/contacto" class="btn btn--dark">Hablemos</a>
         <a href="/consultoria" class="btn btn--dark">Explorar mi enfoque</a>
@@ -31,7 +33,7 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
   <!-- 02 POSITIONING STATEMENT -->
   <section class="section statement">
     <div class="wrap">
-      <p class="display statement__text">El marketing no empieza en Instagram.<br />Empieza entendiendo el negocio.</p>
+      <p class="display statement__text">{home.statementLine1}<br />{home.statementLine2}</p>
     </div>
   </section>
 
@@ -39,10 +41,10 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
   <section class="section section--beige">
     <div class="wrap grid-2">
       <div>
-        <SectionHeading number="03" eyebrow="El problema real" title="Quizá tu problema no sea hacer más marketing." />
+        <SectionHeading number="03" eyebrow="El problema real" title={home.problemTitle} />
       </div>
       <div>
-        <p>Quizá sea no tener claro qué debería estar haciendo tu marketing — y para quién, y por qué ahora mismo y no de cualquier otra forma. Ese es el punto en el que empieza este trabajo.</p>
+        <p>{home.problemBody}</p>
       </div>
     </div>
   </section>
@@ -51,8 +53,8 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
   <section class="section">
     <div class="wrap grid-asym">
       <div>
-        <SectionHeading number="04" eyebrow="Sobre mí" title="Antes de preguntar qué publicar, me interesa entender qué debería significar la marca." />
-        <p>Trabajo con negocios que quieren diferenciarse de verdad, no solo verse distintos un trimestre. Mi punto de partida es siempre el negocio: modelo, cliente, posicionamiento, propuesta de valor — el marketing viene después, como consecuencia, no como parche.</p>
+        <SectionHeading number="04" eyebrow="Sobre mí" title={home.aboutTitle} />
+        <p>{home.aboutBody}</p>
         <a href="/sobre-mi" class="btn">Sobre mí →</a>
       </div>
       <div class="hero__placeholder">[NURIA PORTRAIT — ABOUT]</div>
@@ -179,7 +181,7 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
   <!-- 13 FINAL CTA -->
   <section class="section section--dark final-cta">
     <div class="wrap">
-      <p class="display final-cta__text">Si estás buscando una mirada estratégica para entender dónde estás, detectar oportunidades y decidir qué hacer después, hablemos.</p>
+      <p class="display final-cta__text">{home.finalCtaText}</p>
       <a href="/contacto" class="btn btn--dark">Iniciar conversación →</a>
     </div>
   </section>
@@ -199,21 +201,28 @@ const insights = (await getCollection('insights')).sort((a, b) => b.data.date.va
     top: 0; right: 0; bottom: 0; left: 0;
     background-image: url('/images/hero-bg.jpg');
     background-size: cover;
-    background-position: center 62%;
+    background-position: 80% 68%;
+    filter: brightness(0.78) saturate(0.85);
     z-index: 0;
+  }
+  .hero__overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(28,26,24,0.32);
+    z-index: 1;
   }
   .hero__scrim-top {
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 340px;
-    background: linear-gradient(to bottom, rgba(246,216,228,0.97), rgba(246,216,228,0));
+    height: 380px;
+    background: linear-gradient(to bottom, rgba(246,216,228,0.9), rgba(246,216,228,0));
     z-index: 1;
   }
   .hero__scrim-bottom {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 420px;
-    background: linear-gradient(to top, rgba(44,44,44,0.88), rgba(44,44,44,0));
+    height: 480px;
+    background: linear-gradient(to top, rgba(28,26,24,0.94), rgba(28,26,24,0));
     z-index: 1;
   }
   .hero__inner { position: relative; z-index: 2; max-width: 820px; }

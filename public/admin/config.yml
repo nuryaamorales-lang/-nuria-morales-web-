@@ -8,6 +8,24 @@ public_folder: "/images/uploads"
 publish_mode: simple
 
 collections:
+  - name: "settings"
+    label: "Textos de la Home"
+    files:
+      - name: "home"
+        label: "Textos principales"
+        file: "src/content/settings/home.yaml"
+        fields:
+          - { label: "Etiqueta superior (eyebrow)", name: "eyebrow", widget: "string" }
+          - { label: "Título hero (NURIA MORALES)", name: "heroTitle", widget: "string" }
+          - { label: "Frase del hero", name: "heroClaim", widget: "text" }
+          - { label: "Statement — línea 1", name: "statementLine1", widget: "string" }
+          - { label: "Statement — línea 2", name: "statementLine2", widget: "string" }
+          - { label: "Título del problema", name: "problemTitle", widget: "string" }
+          - { label: "Texto del problema", name: "problemBody", widget: "text" }
+          - { label: "Título Sobre mí", name: "aboutTitle", widget: "text" }
+          - { label: "Texto Sobre mí", name: "aboutBody", widget: "text" }
+          - { label: "Texto del CTA final", name: "finalCtaText", widget: "text" }
+
   - name: "insights"
     label: "Insights (Blog)"
     label_singular: "Artículo"
