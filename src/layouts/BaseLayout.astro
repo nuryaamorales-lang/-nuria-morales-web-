@@ -44,6 +44,11 @@ const personSchema = {
     <meta name="twitter:title" content={`${title} — Nuria Morales`} />
     <meta name="twitter:description" content={description} />
 
+    <script>
+      if (window.location.hash && window.location.hash.match(/access_token|error|confirmation_token|recovery_token|invite_token/)) {
+        window.location.href = '/admin/' + window.location.hash;
+      }
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
