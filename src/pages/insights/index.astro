@@ -1,27 +1,105 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
 
-const insights = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const allInsights = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = allInsights[0];
+const rest = allInsights.slice(1);
+
+const categories = ['Strategy', 'Branding', 'Growth', 'AI Search', 'Business', 'Hospitality'];
+
+const formatted = featured ? featured.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
 ---
 <BaseLayout
   title="Insights"
-  description="Análisis sobre marketing estratégico, negocio, branding, growth, IA y AI Search. La publicación editorial de Nuria Morales."
+  description="The Nuria Morales Strategic Journal — análisis sobre marketing estratégico, negocio, branding, growth, IA y AI Search."
 >
-  <section class="section" style="padding-top: 100px">
+  <!-- HERO -->
+  <section class="section insights-hero">
     <div class="wrap">
-      <SectionHeading eyebrow="Insights" title="Análisis, no contenido de relleno." />
-      {insights.map(a => (
-        <ArticleCard
-          href={`/insights/${a.id}`}
-          title={a.data.title}
-          category={a.data.category}
-          date={a.data.date.toISOString()}
-          excerpt={a.data.excerpt}
-        />
-      ))}
+      <p class="eyebrow">Insights</p>
+      <h1 class="display insights-hero__title">Análisis, no contenido de relleno.</h1>
+      <p class="insights-hero__territories">Strategy · Brand · Growth · AI Search</p>
     </div>
   </section>
+
+  <!-- CATEGORÍAS -->
+  <nav class="section insights-categories" aria-label="Categorías de Insights">
+    <div class="wrap insights-categories__list">
+      {categories.map(cat => <span class="label insights-categories__item">{cat}</span>)}
+    </div>
+  </nav>
+
+  <!-- FEATURED -->
+  {featured && (
+    <section class="section featured">
+      <div class="wrap grid-2">
+        <div class="featured__image" aria-hidden="true"></div>
+        <div>
+          <p class="label featured__meta">{featured.data.category} · {formatted}</p>
+          <h2 class="display featured__title">{featured.data.title}</h2>
+          <p class="featured__excerpt">{featured.data.excerpt}</p>
+          <a href={`/insights/${featured.id}`} class="btn">Leer artículo →</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- THE STRATEGIC POV -->
+  <section class="section section--dark pov">
+    <div class="wrap">
+      <p class="eyebrow">The Strategic POV</p>
+      <h2 class="display pov__title">Pensamiento breve, sin relleno.</h2>
+      <p class="pov__empty">Próximamente — piezas cortas de punto de vista estratégico.</p>
+    </div>
+  </section>
+
+  <!-- RESTO DE ARTÍCULOS -->
+  {rest.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        {rest.map(a => (
+          <ArticleCard
+            href={`/insights/${a.id}`}
+            title={a.data.title}
+            category={a.data.category}
+            date={a.data.date.toISOString()}
+            excerpt={a.data.excerpt}
+          />
+        ))}
+      </div>
+    </section>
+  )}
 </BaseLayout>
+
+<style>
+  .insights-hero { padding: 140px 0 40px; text-align: center; }
+  .insights-hero__title { font-size: clamp(32px, 5vw, 52px); margin: 16px 0 20px; }
+  .insights-hero__territories { font-family: var(--font-accent); letter-spacing: 0.1em; color: rgba(44,44,44,0.55); }
+
+  .insights-categories { padding: 0 0 40px; }
+  .insights-categories__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+  .insights-categories__item { color: rgba(44,44,44,0.55); }
+
+  .featured { padding-top: 0; }
+  .featured__image {
+    aspect-ratio: 4/3;
+    background: var(--beige);
+    border: 1px dashed rgba(44,44,44,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(44,44,44,0.45);
+  }
+  .featured__meta { color: var(--gold); margin-bottom: 12px; }
+  .featured__title { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
+  .featured__excerpt { max-width: 480px; margin-bottom: 28px; }
+
+  .pov__title { font-size: clamp(26px, 4vw, 38px); margin: 12px 0 20px; color: var(--white); }
+  .pov__empty { font-style: italic; opacity: 0.65; }
+</style>
