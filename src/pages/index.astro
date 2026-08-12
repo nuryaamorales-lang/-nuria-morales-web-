@@ -106,21 +106,30 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
   </section>
 
   <!-- 08 SELECTED WORK -->
-  <section class="section">
-    <div class="wrap">
-      <SectionHeading number="08" eyebrow="Selected Work" title="Proyectos reales, criterio verificable." />
-      {proyectos.map(p => (
-        <ProjectCard
-          href={`/proyectos/${p.id}`}
-          title={p.data.title}
-          sector={p.data.sector}
-          type={p.data.type}
-          summary={p.data.summary}
-        />
-      ))}
-      <a href="/proyectos" class="btn" style="margin-top:24px;display:inline-block">Ver todos los proyectos →</a>
-    </div>
-  </section>
+  {proyectos.length > 0 ? (
+    <section class="section">
+      <div class="wrap">
+        <SectionHeading number="08" eyebrow="Selected Work" title="Proyectos reales, criterio verificable." />
+        {proyectos.map(p => (
+          <ProjectCard
+            href={`/proyectos/${p.id}`}
+            title={p.data.title}
+            sector={p.data.sector}
+            type={p.data.type}
+            summary={p.data.summary}
+          />
+        ))}
+        <a href="/proyectos" class="btn" style="margin-top:24px;display:inline-block">Ver todos los proyectos →</a>
+      </div>
+    </section>
+  ) : (
+    <section class="section selected-work-empty">
+      <div class="wrap">
+        <p class="eyebrow">08 — Selected Work</p>
+        <p class="selected-work-empty__text">A growing collection of strategic projects.</p>
+      </div>
+    </section>
+  )}
 
   <!-- 09 AI SEARCH -->
   <section class="section section--beige">
@@ -200,7 +209,7 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     background-size: cover;
-    background-position: 88% 42%;
+    background-position: center 22%;
     filter: brightness(0.78) saturate(0.85);
     z-index: 0;
   }
@@ -296,4 +305,13 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
   .newsletter__form button { background: none; border-bottom: 1px solid var(--dark); cursor: pointer; align-self: flex-start; }
 
   .final-cta__text { font-size: clamp(26px, 4vw, 42px); max-width: 820px; margin-bottom: 40px; }
+
+  .selected-work-empty { text-align: center; }
+  .selected-work-empty__text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: rgba(44,44,44,0.6);
+    margin-top: 16px;
+  }
 </style>

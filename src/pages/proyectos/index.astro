@@ -13,7 +13,7 @@ const proyectos = (await getCollection('proyectos')).sort((a, b) => a.data.order
   <section class="section" style="padding-top: 100px">
     <div class="wrap">
       <SectionHeading eyebrow="Selected Work" title="Proyectos reales. No todos son clientes, y eso queda siempre indicado." />
-      {proyectos.map(p => (
+      {proyectos.length > 0 ? proyectos.map(p => (
         <ProjectCard
           href={`/proyectos/${p.id}`}
           title={p.data.title}
@@ -21,7 +21,11 @@ const proyectos = (await getCollection('proyectos')).sort((a, b) => a.data.order
           type={p.data.type}
           summary={p.data.summary}
         />
-      ))}
+      )) : (
+        <p style="font-family: var(--font-display); font-style: italic; font-size: 22px; color: rgba(44,44,44,0.6); margin-top: 24px;">
+          A growing collection of strategic projects.
+        </p>
+      )}
     </div>
   </section>
 </BaseLayout>
