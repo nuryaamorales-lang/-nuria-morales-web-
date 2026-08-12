@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: "insights"
+    label: "Insights (Blog)"
+    label_singular: "Artículo"
+    folder: "src/content/insights"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Subtítulo", name: "subtitle", widget: "string", required: false }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - label: "Categoría"
+        name: "category"
+        widget: "select"
+        options: ["Estrategia", "Branding", "Growth", "AI & Search", "Negocio"]
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Extracto (resumen corto)", name: "excerpt", widget: "text" }
+      - { label: "Meta descripción (SEO)", name: "metaDescription", widget: "text" }
+      - label: "Servicio relacionado"
+        name: "servicioRelacionado"
+        widget: "select"
+        required: false
+        options: ["Strategy", "Positioning & Branding", "Growth & Customer Journey", "AI & Search"]
+      - { label: "Imagen de portada", name: "cover", widget: "image", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "proyectos"
+    label: "Selected Work"
+    label_singular: "Proyecto"
+    folder: "src/content/proyectos"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título del proyecto", name: "title", widget: "string" }
+      - { label: "Sector", name: "sector", widget: "string" }
+      - label: "Tipo"
+        name: "type"
+        widget: "select"
+        options: ["Client Project", "Strategic Collaboration", "Strategic Analysis", "Practice Project"]
+        hint: "Nunca marcar como Client Project si no hubo relación de cliente real."
+      - { label: "Resumen (una línea)", name: "summary", widget: "text" }
+      - label: "Servicio relacionado"
+        name: "servicioRelacionado"
+        widget: "select"
+        required: false
+        options: ["Strategy", "Positioning & Branding", "Growth & Customer Journey", "AI & Search"]
+      - { label: "Orden en el listado", name: "order", widget: "number", default: 50 }
+      - { label: "Imagen de portada", name: "cover", widget: "image", required: false }
+      - { label: "Contenido del caso", name: "body", widget: "markdown" }
