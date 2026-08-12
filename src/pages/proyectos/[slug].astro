@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const proyectos = await getCollection('proyectos');
+  return proyectos.map(p => ({ params: { slug: p.id }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <article class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <p class="label" style="color: var(--gold)">{entry.data.type} · {entry.data.sector}</p>
+      <h1 class="display" style="font-size: clamp(36px, 6vw, 64px); margin: 16px 0 40px">{entry.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+      <a href="/contacto" class="btn" style="margin-top: 40px; display: inline-block">Hablemos de tu proyecto →</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose { max-width: 720px; }
+  .prose :global(h2) { font-size: 26px; margin: 40px 0 12px; }
+  .prose :global(p) { margin: 0 0 16px; }
+</style>

@@ -1,0 +1,87 @@
+---
+const links = [
+  { href: '/sobre-mi', label: 'About' },
+  { href: '/consultoria', label: 'Consulting' },
+  { href: '/proyectos', label: 'Selected Work' },
+  { href: '/insights', label: 'Insights' },
+];
+---
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="/" class="site-header__brand">NURIA MORALES</a>
+    <nav aria-label="Navegación principal" class="site-header__nav">
+      <ul>
+        {links.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <a href="/contacto" class="site-header__cta">Hablemos</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(44,44,44,0.1);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .site-header__brand {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    color: var(--dark);
+  }
+  .site-header__nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .site-header__nav li {
+    margin-left: 32px;
+  }
+  .site-header__nav li:first-child {
+    margin-left: 0;
+  }
+  .site-header__nav a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    padding-bottom: 3px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease, color 0.25s ease;
+    white-space: nowrap;
+  }
+  .site-header__nav a:hover { border-color: var(--gold); color: var(--gold); }
+  .site-header__cta {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    padding: 10px 20px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .site-header__cta:hover { background: var(--dark); color: var(--white); }
+  @media (max-width: 720px) {
+    .site-header__nav { display: none; }
+  }
+</style>

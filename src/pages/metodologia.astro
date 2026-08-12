@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const fases = [
+  { n: '01', name: 'Understand', desc: 'Entender el negocio, el mercado, el cliente y el contexto real antes de plantear ninguna acción.' },
+  { n: '02', name: 'Diagnose', desc: 'Detectar problemas, oportunidades y puntos de fricción concretos, no genéricos.' },
+  { n: '03', name: 'Strategize', desc: 'Definir posicionamiento, prioridades y estrategia con una lógica empresarial clara.' },
+  { n: '04', name: 'Activate', desc: 'Convertir la estrategia en acciones, sistemas y crecimiento medible.' },
+];
+---
+<BaseLayout
+  title="Metodología"
+  description="Understand, Diagnose, Strategize, Activate. La metodología propia de Nuria Morales para abordar cada proyecto de consultoría estratégica."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Metodología propia" title="Un sistema de consultoría, no una lista de servicios." />
+      <p style="max-width: 640px">Cada proyecto sigue el mismo proceso, independientemente del sector. Es lo que permite comparar diagnósticos y mantener el criterio consistente entre clientes.</p>
+    </div>
+  </section>
+
+  {fases.map((f, i) => (
+    <section class={`section fase ${i % 2 === 0 ? '' : 'section--beige'}`}>
+      <div class="wrap grid-2">
+        <div>
+          <p class="eyebrow">{f.n}</p>
+          <h2 class="display fase__name">{f.name}</h2>
+        </div>
+        <p>{f.desc}</p>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">¿Quieres aplicar esta metodología a tu negocio?</p>
+      <a href="/contacto" class="btn btn--dark">Hablemos →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fase__name { font-size: clamp(32px, 5vw, 56px); margin-top: 12px; }
+</style>

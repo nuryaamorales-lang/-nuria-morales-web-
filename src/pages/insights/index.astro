@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const insights = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout
+  title="Insights"
+  description="Análisis sobre marketing estratégico, negocio, branding, growth, IA y AI Search. La publicación editorial de Nuria Morales."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Insights" title="Análisis, no contenido de relleno." />
+      {insights.map(a => (
+        <ArticleCard
+          href={`/insights/${a.id}`}
+          title={a.data.title}
+          category={a.data.category}
+          date={a.data.date.toISOString()}
+          excerpt={a.data.excerpt}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

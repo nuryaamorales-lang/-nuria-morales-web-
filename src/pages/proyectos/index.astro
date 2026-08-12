@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const proyectos = (await getCollection('proyectos')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Selected Work"
+  description="Proyectos, colaboraciones y análisis estratégicos de Nuria Morales, consultora estratégica de marketing."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Selected Work" title="Proyectos reales. No todos son clientes, y eso queda siempre indicado." />
+      {proyectos.map(p => (
+        <ProjectCard
+          href={`/proyectos/${p.id}`}
+          title={p.data.title}
+          sector={p.data.sector}
+          type={p.data.type}
+          summary={p.data.summary}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

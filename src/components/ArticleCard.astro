@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  category: string;
+  date: string;
+  excerpt: string;
+}
+const { href, title, category, date, excerpt } = Astro.props;
+const formatted = new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<a href={href} class="article-card">
+  <p class="label article-card__meta">{category} · {formatted}</p>
+  <h3 class="display article-card__title">{title}</h3>
+  <p class="article-card__excerpt">{excerpt}</p>
+  <span class="btn">Leer artículo →</span>
+</a>
+
+<style>
+  .article-card {
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    padding: 32px 0;
+    border-top: 1px solid rgba(44,44,44,0.15);
+  }
+  .article-card__meta { color: var(--gold); margin-bottom: 10px; }
+  .article-card__title { font-size: clamp(22px, 3vw, 30px); margin-bottom: 12px; }
+  .article-card__excerpt { max-width: 640px; margin-bottom: 18px; }
+</style>

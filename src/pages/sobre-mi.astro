@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+<BaseLayout
+  title="Sobre mí"
+  description="Nuria Morales, consultora estratégica de marketing. Formación, filosofía de trabajo y forma de entender los negocios."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap grid-asym">
+      <div>
+        <SectionHeading eyebrow="Sobre Nuria" title="Antes de preguntarme qué deberíamos publicar, me interesa entender qué debería significar la marca." />
+        <p>Soy consultora estratégica de marketing. Ayudo a negocios que quieren diferenciarse de verdad a entender su modelo, su cliente y su posicionamiento antes de plantear cualquier acción de marketing.</p>
+        <p>No vendo publicaciones en redes sociales, ni diseño, ni community management. Vendo estrategia, posicionamiento y crecimiento empresarial — con la disciplina de quien entiende que un negocio no crece por publicar más, sino por decidir mejor.</p>
+        <p>[PLACEHOLDER — dos o tres párrafos adicionales sobre trayectoria, filosofía de trabajo y forma de abordar los proyectos.]</p>
+      </div>
+      <div class="portrait">[NURIA PORTRAIT — ABOUT]</div>
+    </div>
+  </section>
+
+  <section class="section section--beige">
+    <div class="wrap">
+      <SectionHeading eyebrow="Formación" title="Credenciales" />
+      <ul class="list">
+        <li>Formación universitaria en Marketing.</li>
+        <li>Especialización en Business Marketing Strategy, Estrategia de Negocios, Branding, Posicionamiento, Growth, Customer Journey, Transformación Digital e Inteligencia Artificial aplicada al marketing.</li>
+        <li>Acreditación como Consultora Estratégica de Negocios — American Business School of Miami.</li>
+        <li>Formación complementaria con referentes de primer nivel en marketing, negocios, estrategia, crecimiento empresarial y branding.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section final-cta section--dark">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">¿Quieres una mirada estratégica sobre tu negocio?</p>
+      <a href="/contacto" class="btn btn--dark">Hablemos →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .portrait {
+    aspect-ratio: 4/5;
+    background: var(--beige);
+    border: 1px dashed rgba(44,44,44,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(44,44,44,0.5); text-align: center; padding: 24px;
+  }
+  .list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; max-width: 720px; }
+  .list li { padding-top: 16px; border-top: 1px solid rgba(44,44,44,0.15); }
+</style>

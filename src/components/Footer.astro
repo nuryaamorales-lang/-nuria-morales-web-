@@ -1,0 +1,80 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__top">
+      <div>
+        <p class="display site-footer__name">NURIA MORALES</p>
+        <p class="label" style="color: var(--rosa-petalo)">Consultora Estratégica de Marketing</p>
+      </div>
+      <nav aria-label="Navegación de pie de página" class="site-footer__nav">
+        <ul>
+          <li><a href="/sobre-mi">About</a></li>
+          <li><a href="/consultoria">Consulting</a></li>
+          <li><a href="/proyectos">Selected Work</a></li>
+          <li><a href="/insights">Insights</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__social">
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:hola@nuriamorales.com">Email</a>
+      </div>
+    </div>
+    <hr class="rule" />
+    <div class="site-footer__bottom">
+      <p>© {year} Nuria Morales. Todos los derechos reservados.</p>
+      <div class="site-footer__legal">
+        <a href="/legal/privacy">Privacy Policy</a>
+        <a href="/legal/cookies">Cookies</a>
+        <a href="/legal/legal">Legal Notice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--dark);
+    color: var(--white);
+    padding: 72px 0 32px;
+  }
+  .site-footer__top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: space-between;
+    padding-bottom: 48px;
+  }
+  .site-footer__name { font-size: 28px; margin-bottom: 6px; }
+  .site-footer__nav ul, .site-footer__social {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  .site-footer__nav a, .site-footer__social a {
+    font-family: var(--font-body);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    opacity: 0.85;
+  }
+  .site-footer__nav a:hover, .site-footer__social a:hover { opacity: 1; color: var(--rosa-petalo); }
+  .site-footer .rule { border-top-color: rgba(255,255,255,0.18); margin: 0 0 24px; }
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    opacity: 0.65;
+  }
+  .site-footer__legal { display: flex; gap: 20px; }
+  .site-footer__legal a { color: var(--white); text-decoration: none; }
+</style>

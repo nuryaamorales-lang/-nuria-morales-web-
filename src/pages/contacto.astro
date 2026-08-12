@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Hablemos"
+  description="Inicia una conversación estratégica con Nuria Morales, consultora estratégica de marketing."
+>
+  <section class="section contacto" style="padding-top: 100px">
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">Hablemos</p>
+        <h1 class="display contacto__title">Si estás buscando una mirada estratégica para entender dónde estás, detectar oportunidades y decidir qué hacer después, hablemos.</h1>
+        <div class="contacto__links">
+          <a href="mailto:hola@nuriamorales.com">[EMAIL]</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">[LINKEDIN]</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">[INSTAGRAM]</a>
+        </div>
+      </div>
+      <form class="contacto__form" aria-label="Formulario de contacto">
+        <label class="label" for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" required autocomplete="name" />
+
+        <label class="label" for="email-contacto">Email</label>
+        <input id="email-contacto" name="email" type="email" required autocomplete="email" />
+
+        <label class="label" for="mensaje">Cuéntame sobre tu negocio</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Iniciar conversación →</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contacto__title { font-size: clamp(28px, 4.5vw, 44px); margin: 16px 0 40px; }
+  .contacto__links { display: flex; flex-direction: column; gap: 10px; }
+  .contacto__links a { text-decoration: none; font-family: var(--font-body); font-size: 15px; }
+  .contacto__form { display: flex; flex-direction: column; gap: 8px; }
+  .contacto__form input, .contacto__form textarea {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid var(--dark);
+    background: transparent;
+    color-scheme: light;
+  }
+  .contacto__form input:focus, .contacto__form textarea:focus { outline: none; border-bottom-color: var(--gold); }
+  .contacto__form button { align-self: flex-start; background: none; border: none; border-bottom: 1px solid var(--dark); cursor: pointer; }
+</style>

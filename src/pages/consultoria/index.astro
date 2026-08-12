@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const territorios = [
+  { n: '01', name: 'Strategy', desc: 'Diagnóstico de negocio, modelo, cliente ideal y prioridades antes de cualquier acción de marketing.' },
+  { n: '02', name: 'Positioning & Branding', desc: 'Qué debe significar la marca, cómo se diferencia y cómo se percibe frente a la competencia real.' },
+  { n: '03', name: 'Growth & Customer Journey', desc: 'Del primer contacto a la conversión: qué recorrido necesita cada tipo de cliente y qué embudo lo sostiene.' },
+  { n: '04', name: 'AI & Search', desc: 'Visibilidad de marca en búsqueda tradicional y en entornos de búsqueda generativa: AI Search Visibility, SEO, GEO/AEO, AI Discovery, estrategia de contenido y marketing con IA integrada.', href: '/consultoria/ai-search' },
+];
+---
+<BaseLayout
+  title="Consultoría"
+  description="Strategy, Positioning & Branding, Growth & Customer Journey, AI & Search. Los cuatro territorios de trabajo de Nuria Morales, consultora estratégica de marketing."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Qué hago" title="Cuatro territorios de trabajo, un mismo punto de partida: el negocio." />
+    </div>
+  </section>
+
+  {territorios.map((t, i) => (
+    <section class={`section territorio ${i % 2 === 0 ? '' : 'section--beige'}`}>
+      <div class="wrap grid-2">
+        <div>
+          <p class="eyebrow">{t.n}</p>
+          <h2 class="display territorio__name">{t.name}</h2>
+        </div>
+        <div>
+          <p>{t.desc}</p>
+          {t.href && <a href={t.href} class="btn">Ver servicio detallado →</a>}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">¿Por dónde debería empezar tu negocio?</p>
+      <a href="/contacto" class="btn btn--dark">Hablemos →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .territorio__name { font-size: clamp(28px, 4.5vw, 48px); margin-top: 12px; }
+</style>

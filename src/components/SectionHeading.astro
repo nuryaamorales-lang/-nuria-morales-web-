@@ -1,0 +1,21 @@
+---
+interface Props {
+  number?: string;
+  eyebrow?: string;
+  title: string;
+  dark?: boolean;
+}
+const { number, eyebrow, title, dark = false } = Astro.props;
+---
+<div class="section-heading">
+  {(number || eyebrow) && (
+    <p class="eyebrow">{number ? `${number} — ` : ''}{eyebrow}</p>
+  )}
+  <h2 class:list={['display', { 'section-heading__dark': dark }]}>{title}</h2>
+</div>
+
+<style>
+  .section-heading { margin-bottom: 48px; max-width: 720px; }
+  .section-heading h2 { font-size: clamp(28px, 4vw, 44px); }
+  .section-heading__dark { color: var(--white); }
+</style>

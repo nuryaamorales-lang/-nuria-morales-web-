@@ -1,0 +1,38 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  sector: string;
+  type: 'Client Project' | 'Strategic Collaboration' | 'Strategic Analysis' | 'Practice Project';
+  summary: string;
+}
+const { href, title, sector, type, summary } = Astro.props;
+---
+<a href={href} class="project-card">
+  <span class="label project-card__type">{type}</span>
+  <h3 class="display project-card__title">{title}</h3>
+  <p class="project-card__sector">{sector}</p>
+  <p class="project-card__summary">{summary}</p>
+  <span class="btn project-card__link">Ver caso →</span>
+</a>
+
+<style>
+  .project-card {
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    padding: 32px 0;
+    border-top: 1px solid rgba(44,44,44,0.15);
+  }
+  .project-card__type { color: var(--gold); }
+  .project-card__title { font-size: clamp(24px, 3vw, 34px); margin: 10px 0 4px; }
+  .project-card__sector {
+    font-family: var(--font-body);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(44,44,44,0.6);
+    margin: 0 0 14px;
+  }
+  .project-card__summary { max-width: 640px; margin: 0 0 18px; }
+</style>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Página no encontrada" description="Esta página no existe.">
+  <section class="section notfound">
+    <div class="wrap">
+      <p class="eyebrow">404</p>
+      <h1 class="display notfound__title">Esta página no existe.</h1>
+      <a href="/" class="btn">Volver al inicio →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound { min-height: 60vh; display: flex; align-items: center; }
+  .notfound__title { font-size: clamp(32px, 5vw, 52px); margin: 16px 0 32px; }
+</style>

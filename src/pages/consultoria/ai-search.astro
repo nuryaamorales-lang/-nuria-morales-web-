@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const fases = [
+  { n: '01', name: 'Entity', desc: 'Cómo se entiende la marca: qué es, qué hace y para quién, de forma inequívoca.' },
+  { n: '02', name: 'Search', desc: 'Cómo aparece la marca en búsqueda tradicional hoy.' },
+  { n: '03', name: 'AI Visibility', desc: 'Cómo aparece — o puede llegar a aparecer — en entornos de búsqueda generativa.' },
+  { n: '04', name: 'Content', desc: 'Qué contenido necesita la marca para ser citada y comprendida correctamente.' },
+  { n: '05', name: 'Technical', desc: 'Cómo mejorar el rastreo, la estructura y la comprensión técnica del sitio.' },
+  { n: '06', name: 'Authority', desc: 'Qué señales externas y contenido de autoridad respaldan la entidad de marca.' },
+  { n: '07', name: 'Roadmap', desc: 'Qué hacer en los próximos 90 días, priorizado por impacto.' },
+];
+---
+<BaseLayout
+  title="AI Search Visibility"
+  description="Cómo puede una marca ser descubierta, entendida y considerada en los nuevos entornos de búsqueda impulsados por IA. Servicio de AI Search Visibility de Nuria Morales."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <p class="eyebrow">Consultoría · AI &amp; Search</p>
+      <h1 class="display" style="font-size: clamp(36px, 6vw, 64px); margin: 16px 0 24px">AI Search Visibility</h1>
+      <p style="max-width: 640px">Analizar cómo una marca puede ser descubierta, entendida y considerada en los nuevos entornos de búsqueda impulsados por inteligencia artificial. No se prometen posiciones garantizadas en Google ni en sistemas de IA — se trabaja sobre entidad, contenido, estructura técnica y autoridad, de forma verificable.</p>
+    </div>
+  </section>
+
+  <section class="section section--beige">
+    <div class="wrap">
+      {fases.map(f => (
+        <div class="fase-row">
+          <p class="eyebrow">{f.n}</p>
+          <h3 class="display fase-row__name">{f.name}</h3>
+          <p class="fase-row__desc">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">¿Sabes cómo te describe hoy una IA cuando alguien pregunta por tu sector?</p>
+      <a href="/contacto" class="btn btn--dark">Hablemos →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fase-row {
+    display: grid;
+    grid-template-columns: 60px 220px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 24px 0;
+    border-top: 1px solid rgba(44,44,44,0.15);
+  }
+  .fase-row:first-child { border-top: none; }
+  .fase-row__name { font-size: 22px; }
+  @media (max-width: 720px) {
+    .fase-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
