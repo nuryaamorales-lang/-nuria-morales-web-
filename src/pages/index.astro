@@ -15,18 +15,20 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
 >
   <!-- 01 HERO -->
   <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="hero__text">
+    <div class="hero__photo">
+      <img src={home.heroImage} alt="Nuria Morales" />
+      <div class="hero__photo-caption">
         <p class="eyebrow">{home.eyebrow}</p>
+      </div>
+    </div>
+    <div class="hero__statement-block">
+      <div class="wrap">
         <h1 class="display hero__title">{home.heroTitle}</h1>
         <p class="hero__claim">{home.heroClaim}</p>
         <div class="hero__actions">
           <a href="/contacto" class="btn">Hablemos</a>
           <a href="/consultoria" class="btn">Explorar mi enfoque</a>
         </div>
-      </div>
-      <div class="hero__photo">
-        <img src={home.heroImage} alt="Nuria Morales" />
       </div>
     </div>
   </section>
@@ -199,34 +201,42 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
 
 <style>
   .hero {
-    padding: clamp(140px, 16vw, 220px) 0 clamp(80px, 10vw, 120px);
-    background: var(--rosa-petalo);
+    background: var(--white);
   }
-  .hero__grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(32px, 6vw, 96px);
-    align-items: center;
-  }
-  .hero__text { max-width: 560px; }
-  .hero__title { font-size: clamp(44px, 7vw, 88px); margin: 16px 0 28px; color: var(--dark); }
-  .hero__claim { font-size: clamp(18px, 2vw, 22px); margin-bottom: 40px; }
-  .hero__actions { display: flex; flex-wrap: wrap; }
-  .hero__actions > a { margin-right: 32px; margin-bottom: 12px; }
   .hero__photo {
-    aspect-ratio: 4/5;
+    position: relative;
+    width: 100%;
+    height: 78vh;
+    min-height: 480px;
+    max-height: 760px;
     overflow: hidden;
-    background: var(--beige);
+    margin-top: -1px;
   }
   .hero__photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 32%;
+    object-position: center 30%;
   }
-  @media (max-width: 860px) {
-    .hero__grid { grid-template-columns: 1fr; }
-    .hero__photo { order: -1; max-width: 380px; margin: 0 auto 40px; }
+  .hero__photo-caption {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 28px;
+  }
+  .hero__photo-caption .eyebrow {
+    color: var(--white);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+  }
+  .hero__statement-block {
+    background: var(--rosa-petalo);
+    padding: clamp(48px, 7vw, 88px) 0;
+  }
+  .hero__title { font-size: clamp(38px, 6vw, 76px); margin: 0 0 24px; color: var(--dark); max-width: 780px; }
+  .hero__claim { font-size: clamp(18px, 2vw, 22px); margin-bottom: 36px; max-width: 560px; }
+  .hero__actions { display: flex; flex-wrap: wrap; }
+  .hero__actions > a { margin-right: 32px; margin-bottom: 12px; }
+  @media (max-width: 640px) {
+    .hero__photo { height: 62vh; }
   }
 
   .statement__text {
