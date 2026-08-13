@@ -5,15 +5,17 @@ interface Props {
   sector: string;
   type: 'Client Project' | 'Strategic Collaboration' | 'Strategic Analysis' | 'Practice Project';
   summary: string;
+  lang?: 'es' | 'en';
 }
-const { href, title, sector, type, summary } = Astro.props;
+const { href, title, sector, type, summary, lang = 'es' } = Astro.props;
+const linkLabel = lang === 'en' ? 'See case →' : 'Ver caso →';
 ---
 <a href={href} class="project-card">
   <span class="label project-card__type">{type}</span>
   <h3 class="display project-card__title">{title}</h3>
   <p class="project-card__sector">{sector}</p>
   <p class="project-card__summary">{summary}</p>
-  <span class="btn project-card__link">Ver caso →</span>
+  <span class="btn project-card__link">{linkLabel}</span>
 </a>
 
 <style>

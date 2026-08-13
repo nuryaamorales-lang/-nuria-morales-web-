@@ -17,13 +17,15 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Nuria Morales",
-  "jobTitle": "Consultora Estratégica de Marketing",
+  "jobTitle": lang === 'en' ? "Strategic Marketing Consultant" : "Consultora Estratégica de Marketing",
   "url": Astro.site?.toString(),
   "worksFor": {
     "@type": "ProfessionalService",
-    "name": "Nuria Morales — Consultoría Estratégica"
+    "name": lang === 'en' ? "Nuria Morales — Strategic Consulting" : "Nuria Morales — Consultoría Estratégica"
   }
 };
+const skipLinkText = lang === 'en' ? 'Skip to content' : 'Saltar al contenido';
+const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -36,6 +38,7 @@ const personSchema = {
     <meta name="description" content={description} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={`${title} — Nuria Morales`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site)} />
@@ -53,11 +56,11 @@ const personSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
-    <a href="#main" class="sr-only">Saltar al contenido</a>
+    <a href="#main" class="sr-only">{skipLinkText}</a>
     <Header lang={lang} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

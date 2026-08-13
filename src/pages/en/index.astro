@@ -5,9 +5,27 @@ import ProjectCard from '../../components/ProjectCard.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
 
-const proyectos = (await getCollection('proyectos')).sort((a, b) => a.data.order - b.data.order).slice(0, 2);
-const insights = (await getCollection('insights')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
+
+const proyectosEN = [
+  {
+    id: 'sayumarketing',
+    title: 'Sayumarketing',
+    sector: 'Marketing agency',
+    type: 'Strategic Collaboration' as const,
+    summary: 'From an agency with no consistent sales to its first two clients within the first month of work, by revisiting positioning, offer, pricing and commercial communication.',
+  },
+];
+
+const insightsEN = [
+  {
+    id: 'antes-de-hacer-mas-marketing',
+    title: 'Before doing more marketing, you need to understand the business better',
+    category: 'Strategy',
+    date: '2026-08-01',
+    excerpt: "Most brands don't have a content problem. They have a clarity problem about what they should be communicating and to whom.",
+  },
+];
 ---
 <BaseLayout
   lang="en"
@@ -110,17 +128,18 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
   </section>
 
   <!-- 08 SELECTED WORK -->
-  {proyectos.length > 0 ? (
+  {proyectosEN.length > 0 ? (
     <section class="section">
       <div class="wrap">
         <SectionHeading number="08" eyebrow="Selected Work" title="Real projects, verifiable judgment." />
-        {proyectos.map(p => (
+        {proyectosEN.map(p => (
           <ProjectCard
+            lang="en"
             href={`/en/proyectos/${p.id}`}
-            title={p.data.title}
-            sector={p.data.sector}
-            type={p.data.type}
-            summary={p.data.summary}
+            title={p.title}
+            sector={p.sector}
+            type={p.type}
+            summary={p.summary}
           />
         ))}
         <a href="/en/proyectos" class="btn" style="margin-top:24px;display:inline-block">See all projects →</a>
@@ -151,13 +170,14 @@ const home = (await getCollection('settings')).find(s => s.id === 'home')!.data;
   <section class="section">
     <div class="wrap">
       <SectionHeading number="10" eyebrow="Insights" title="Analysis, not filler content." />
-      {insights.map(a => (
+      {insightsEN.map(a => (
         <ArticleCard
+          lang="en"
           href={`/en/insights/${a.id}`}
-          title={a.data.title}
-          category={a.data.category}
-          date={a.data.date.toISOString()}
-          excerpt={a.data.excerpt}
+          title={a.title}
+          category={a.category}
+          date={a.date}
+          excerpt={a.excerpt}
         />
       ))}
       <a href="/en/insights" class="btn" style="margin-top:24px;display:inline-block">See all Insights →</a>

@@ -2,35 +2,74 @@
 import { getCollection } from 'astro:content';
 const year = new Date().getFullYear();
 const contacto = (await getCollection('contacto'))[0].data;
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+
+const t = {
+  es: {
+    role: 'Consultora Estratégica de Marketing',
+    nav: [
+      { href: '/sobre-mi', label: 'About' },
+      { href: '/consultoria', label: 'Consulting' },
+      { href: '/proyectos', label: 'Selected Work' },
+      { href: '/insights', label: 'Insights' },
+    ],
+    email: 'Email',
+    rights: `© ${year} Nuria Morales. Todos los derechos reservados.`,
+    privacy: 'Privacy Policy',
+    cookies: 'Cookies',
+    legal: 'Legal Notice',
+    privacyHref: '/legal/privacy',
+    cookiesHref: '/legal/cookies',
+    legalHref: '/legal/legal',
+  },
+  en: {
+    role: 'Strategic Marketing Consultant',
+    nav: [
+      { href: '/en/sobre-mi', label: 'About' },
+      { href: '/en/consultoria', label: 'Consulting' },
+      { href: '/en/proyectos', label: 'Selected Work' },
+      { href: '/en/insights', label: 'Insights' },
+    ],
+    email: 'Email',
+    rights: `© ${year} Nuria Morales. All rights reserved.`,
+    privacy: 'Privacy Policy',
+    cookies: 'Cookies',
+    legal: 'Legal Notice',
+    privacyHref: '/legal/privacy',
+    cookiesHref: '/legal/cookies',
+    legalHref: '/legal/legal',
+  },
+}[lang];
 ---
 <footer class="site-footer">
   <div class="wrap">
     <div class="site-footer__top">
       <div>
         <p class="display site-footer__name">NURIA MORALES</p>
-        <p class="label" style="color: var(--rosa-petalo)">Consultora Estratégica de Marketing</p>
+        <p class="label" style="color: var(--rosa-petalo)">{t.role}</p>
       </div>
-      <nav aria-label="Navegación de pie de página" class="site-footer__nav">
+      <nav aria-label="Footer navigation" class="site-footer__nav">
         <ul>
-          <li><a href="/sobre-mi">About</a></li>
-          <li><a href="/consultoria">Consulting</a></li>
-          <li><a href="/proyectos">Selected Work</a></li>
-          <li><a href="/insights">Insights</a></li>
+          {t.nav.map(link => <li><a href={link.href}>{link.label}</a></li>)}
         </ul>
       </nav>
       <div class="site-footer__social">
         {contacto.linkedin && <a href={contacto.linkedin} target="_blank" rel="noopener">LinkedIn</a>}
         {contacto.instagram && <a href={contacto.instagram} target="_blank" rel="noopener">Instagram</a>}
-        <a href={`mailto:${contacto.email}`}>Email</a>
+        <a href={`mailto:${contacto.email}`}>{t.email}</a>
       </div>
     </div>
     <hr class="rule" />
     <div class="site-footer__bottom">
-      <p>© {year} Nuria Morales. Todos los derechos reservados.</p>
+      <p>{t.rights}</p>
       <div class="site-footer__legal">
-        <a href="/legal/privacy">Privacy Policy</a>
-        <a href="/legal/cookies">Cookies</a>
-        <a href="/legal/legal">Legal Notice</a>
+        <a href={t.privacyHref}>{t.privacy}</a>
+        <a href={t.cookiesHref}>{t.cookies}</a>
+        <a href={t.legalHref}>{t.legal}</a>
       </div>
     </div>
   </div>

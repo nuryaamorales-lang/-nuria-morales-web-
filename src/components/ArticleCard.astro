@@ -5,15 +5,17 @@ interface Props {
   category: string;
   date: string;
   excerpt: string;
+  lang?: 'es' | 'en';
 }
-const { href, title, category, date, excerpt } = Astro.props;
-const formatted = new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+const { href, title, category, date, excerpt, lang = 'es' } = Astro.props;
+const formatted = new Date(date).toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+const linkLabel = lang === 'en' ? 'Read article →' : 'Leer artículo →';
 ---
 <a href={href} class="article-card">
   <p class="label article-card__meta">{category} · {formatted}</p>
   <h3 class="display article-card__title">{title}</h3>
   <p class="article-card__excerpt">{excerpt}</p>
-  <span class="btn">Leer artículo →</span>
+  <span class="btn">{linkLabel}</span>
 </a>
 
 <style>
