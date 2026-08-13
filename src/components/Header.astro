@@ -1,14 +1,35 @@
 ---
-const links = [
-  { href: '/sobre-mi', label: 'About' },
-  { href: '/consultoria', label: 'Consulting' },
-  { href: '/proyectos', label: 'Selected Work' },
-  { href: '/insights', label: 'Insights' },
-];
+interface Props {
+  lang?: 'es' | 'en';
+}
+const { lang = 'es' } = Astro.props;
+
+const linksByLang = {
+  es: [
+    { href: '/sobre-mi', label: 'Sobre mí' },
+    { href: '/consultoria', label: 'Consultoría' },
+    { href: '/proyectos', label: 'Selected Work' },
+    { href: '/insights', label: 'Insights' },
+  ],
+  en: [
+    { href: '/en/sobre-mi', label: 'About' },
+    { href: '/en/consultoria', label: 'Consulting' },
+    { href: '/en/proyectos', label: 'Selected Work' },
+    { href: '/en/insights', label: 'Insights' },
+  ],
+};
+const links = linksByLang[lang];
+const homeHref = lang === 'en' ? '/en' : '/';
+const ctaHref = lang === 'en' ? '/en/contacto' : '/contacto';
+const ctaLabel = lang === 'en' ? "Let's talk" : 'Hablemos';
+
+const currentPath = Astro.url.pathname;
+const esPath = lang === 'en' ? currentPath.replace(/^\/en\/?/, '/') : currentPath;
+const enPath = lang === 'es' ? `/en${currentPath === '/' ? '' : currentPath}` : currentPath;
 ---
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a href="/" class="site-header__brand">NURIA MORALES</a>
+    <a href={homeHref} class="site-header__brand">NURIA MORALES</a>
     <nav aria-label="Navegación principal" class="site-header__nav">
       <ul>
         {links.map(link => (
@@ -16,7 +37,14 @@ const links = [
         ))}
       </ul>
     </nav>
-    <a href="/contacto" class="site-header__cta">Hablemos</a>
+    <div class="site-header__right">
+      <div class="site-header__lang">
+        <a href={esPath} class={lang === 'es' ? 'is-active' : ''}>ES</a>
+        <span>/</span>
+        <a href={enPath} class={lang === 'en' ? 'is-active' : ''}>EN</a>
+      </div>
+      <a href={ctaHref} class="site-header__cta">{ctaLabel}</a>
+    </div>
   </div>
 </header>
 
@@ -68,6 +96,28 @@ const links = [
     white-space: nowrap;
   }
   .site-header__nav a:hover { border-color: var(--gold); color: var(--gold); }
+  .site-header__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .site-header__lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .site-header__lang a {
+    text-decoration: none;
+    color: rgba(44,44,44,0.45);
+  }
+  .site-header__lang a.is-active {
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .site-header__lang span { color: rgba(44,44,44,0.3); }
   .site-header__cta {
     font-family: var(--font-body);
     font-weight: 500;

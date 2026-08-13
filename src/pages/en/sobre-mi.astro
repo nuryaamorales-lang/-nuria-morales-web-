@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+---
+<BaseLayout
+  lang="en"
+  title="About"
+  description="Nuria Morales, strategic marketing consultant. Background, working philosophy and approach to business."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap grid-asym">
+      <div>
+        <SectionHeading eyebrow="About Nuria" title="Before asking myself what we should publish, I care about understanding what the brand should mean." />
+        <p>I'm a strategic marketing consultant. I help businesses that want to genuinely differentiate themselves understand their model, their customer and their positioning before considering any marketing action.</p>
+        <p>I don't sell social media posts, design, or community management. I sell strategy, positioning and business growth — with the discipline of someone who understands that a business doesn't grow by publishing more, but by deciding better.</p>
+        <p>My relationship with business started long before my relationship with marketing. I grew up connected to my family's optics business, surrounded by premium and luxury brands — that's where I learned, up close and in practice, how a brand is built, how value is generated and how an experience is created around a product. That period wasn't an anecdotal backstory: it's one of the foundations of how I understand strategy today.</p>
+        <p>Later I studied Business Administration and Finance, where I consolidated that view from a management perspective. My time at Feria Valencia widened the lens even further: working in a commercial environment connected to national and international brands let me see up close different sectors, business models and ways of relating to the market.</p>
+        <p>Marketing came after, as the point where all those pieces — business, management, sales, brand, customer — finally came together. That's why my work doesn't start by asking what to publish. It starts by analyzing the business, and only then turning that strategic direction into marketing decisions that make sense.</p>
+        <p>That way of looking at the business before the marketing was confirmed by a concrete case: Sayumarketing had been operating for about a year without closing its first clients. The problem looked like an acquisition issue, but on closer analysis it was in the foundations — positioning, value proposition, offer and pricing. After working on that strategic foundation, the agency landed its first two clients within the first month.</p>
+        <p>That's why I don't build a traditional agency or a closed catalog of services. My role is to stay close to leadership, understand the business and design the strategy; when a project needs specialized execution, I bring in specific collaborators based on what that business needs — never the other way around. The starting question isn't what I can sell you, but what your business actually needs.</p>
+      </div>
+      <div class="portrait">[NURIA PORTRAIT — ABOUT]</div>
+    </div>
+  </section>
+
+  <section class="section section--beige">
+    <div class="wrap">
+      <SectionHeading eyebrow="Background" title="Credentials" />
+      <ul class="list">
+        <li>University degree in Marketing.</li>
+        <li>Specialization in Business Marketing Strategy, Business Strategy, Branding, Positioning, Growth, Customer Journey, Digital Transformation and AI applied to marketing.</li>
+        <li>Accreditation as Strategic Business Consultant — American Business School of Miami.</li>
+        <li>Continued education with top-level references in marketing, business, strategy, business growth and branding.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section final-cta section--dark">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">Want a strategic perspective on your business?</p>
+      <a href="/en/contacto" class="btn btn--dark">Let's talk →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .portrait {
+    aspect-ratio: 4/5;
+    background: var(--beige);
+    border: 1px dashed rgba(44,44,44,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(44,44,44,0.5); text-align: center; padding: 24px;
+  }
+  .list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; max-width: 720px; }
+  .list li { padding-top: 16px; border-top: 1px solid rgba(44,44,44,0.15); }
+</style>
