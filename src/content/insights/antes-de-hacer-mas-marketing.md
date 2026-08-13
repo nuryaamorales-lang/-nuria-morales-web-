@@ -13,12 +13,12 @@ Cuando una marca siente que "el marketing no funciona", la primera pregunta casi
 
 ## El síntoma no es el problema
 
-[PLACEHOLDER — desarrollar con ejemplos reales o anonimizados de diagnósticos de negocio.]
+Es el caso de Sayumarketing, una agencia que llevaba aproximadamente un año operando sin conseguir una captación de clientes consistente. El diagnóstico inicial podría haberse quedado en "necesita más presencia, más contenido, más visibilidad". No era eso. El problema estaba antes: en los cimientos comerciales — posicionamiento, propuesta de valor, oferta y pricing — que nadie había revisado desde el principio.
 
 ## Qué cambia cuando se empieza por el negocio
 
-[PLACEHOLDER]
+El trabajo no consistió en producir más piezas de marketing, sino en ordenar lo que había debajo: redefinir el posicionamiento, estructurar la propuesta de valor, revisar el pricing, ordenar la oferta y ajustar la comunicación comercial hacia una captación más clara. Solo entonces el marketing tuvo algo sólido que comunicar.
 
 ## Aplicación práctica
 
-[PLACEHOLDER — fragmento aplicado de metodología propia.]
+El resultado se midió en un mes: Sayumarketing consiguió sus dos primeros clientes. No por publicar más, sino por entender mejor qué estaba vendiendo, a quién, y por qué debía elegirse esa opción y no otra. Es la misma secuencia que aplico en cualquier diagnóstico: posicionamiento → oferta → pricing → comunicación → captación. El marketing es la última fase, no la primera.

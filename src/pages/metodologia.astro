@@ -3,10 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
 const fases = [
-  { n: '01', name: 'Understand', desc: 'Entender el negocio, el mercado, el cliente y el contexto real antes de plantear ninguna acción.' },
-  { n: '02', name: 'Diagnose', desc: 'Detectar problemas, oportunidades y puntos de fricción concretos, no genéricos.' },
-  { n: '03', name: 'Strategize', desc: 'Definir posicionamiento, prioridades y estrategia con una lógica empresarial clara.' },
-  { n: '04', name: 'Activate', desc: 'Convertir la estrategia en acciones, sistemas y crecimiento medible.' },
+  { n: '01', name: 'Understand', desc: 'Antes de cualquier recomendación, entiendo el negocio tal y como es: modelo, cliente real, mercado y contexto competitivo. No se diagnostica lo que no se ha entendido primero.', output: 'Un mapa claro de dónde está el negocio hoy.' },
+  { n: '02', name: 'Diagnose', desc: 'Con esa base, identifico los puntos de fricción concretos — no genéricos — que están frenando el crecimiento: en posicionamiento, oferta, pricing o comunicación. El síntoma casi nunca es la causa.', output: 'El problema real, no el síntoma que lo disfraza.' },
+  { n: '03', name: 'Strategize', desc: 'Con el diagnóstico cerrado, defino posicionamiento, prioridades y dirección estratégica. Aquí se decide qué hacer, en qué orden y por qué — antes de tocar cualquier acción de marketing.', output: 'Una dirección clara, priorizada por impacto.' },
+  { n: '04', name: 'Activate', desc: 'Solo entonces la estrategia se convierte en acciones, sistemas y decisiones de marketing con sentido. No se ejecuta para generar movimiento — se ejecuta para generar resultado.', output: 'Crecimiento medible, no actividad sin dirección.' },
 ];
 ---
 <BaseLayout
@@ -16,7 +16,7 @@ const fases = [
   <section class="section" style="padding-top: 100px">
     <div class="wrap">
       <SectionHeading eyebrow="Metodología propia" title="Un sistema de consultoría, no una lista de servicios." />
-      <p style="max-width: 640px">Cada proyecto sigue el mismo proceso, independientemente del sector. Es lo que permite comparar diagnósticos y mantener el criterio consistente entre clientes.</p>
+      <p style="max-width: 640px">Cada proyecto sigue el mismo proceso, en el mismo orden, independientemente del sector. No porque el negocio se simplifique — sino porque saltarse un paso es, casi siempre, el motivo por el que el marketing deja de funcionar. Cada fase existe porque la anterior la hace posible.</p>
     </div>
   </section>
 
@@ -27,7 +27,10 @@ const fases = [
           <p class="eyebrow">{f.n}</p>
           <h2 class="display fase__name">{f.name}</h2>
         </div>
-        <p>{f.desc}</p>
+        <div>
+          <p>{f.desc}</p>
+          <p class="fase__output">→ {f.output}</p>
+        </div>
       </div>
     </section>
   ))}
@@ -42,4 +45,12 @@ const fases = [
 
 <style>
   .fase__name { font-size: clamp(32px, 5vw, 56px); margin-top: 12px; }
+  .fase__output {
+    margin-top: 16px;
+    font-family: var(--font-accent, 'Cinzel', serif);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
 </style>
