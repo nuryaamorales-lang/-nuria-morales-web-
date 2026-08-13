@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+
+const territorios = [
+  { n: '01', name: 'Strategic Diagnosis', desc: 'Clarity on the real problem, priorities and opportunities before deciding anything.' },
+  { n: '02', name: 'Brand Positioning', desc: 'What place the brand should occupy and why it should be chosen over real competitors.' },
+  { n: '03', name: 'Growth Strategy', desc: 'Where value is being lost in the customer journey and which levers drive growth.' },
+  { n: '04', name: 'AI Search Visibility', desc: 'How the brand is discovered and understood across search engines and generative AI systems: SEO, GEO/AEO, AI Discovery and content strategy with integrated AI.', href: '/en/consultoria/ai-search' },
+];
+---
+<BaseLayout
+  lang="en"
+  title="Consulting"
+  description="Strategic Diagnosis, Brand Positioning, Growth Strategy, AI Search Visibility. Nuria Morales' four areas of work as a strategic marketing consultant."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="What I do" title="Four territories, one starting point: the business." />
+    </div>
+  </section>
+
+  {territorios.map((t, i) => (
+    <section class={`section territorio ${i % 2 === 0 ? '' : 'section--beige'}`}>
+      <div class="wrap grid-2">
+        <div>
+          <p class="eyebrow">{t.n}</p>
+          <h2 class="display territorio__name">{t.name}</h2>
+        </div>
+        <div>
+          <p>{t.desc}</p>
+          {t.href && <a href={t.href} class="btn">See detailed service →</a>}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">Where should your business start?</p>
+      <a href="/en/contacto" class="btn btn--dark">Let's talk →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .territorio__name { font-size: clamp(28px, 4.5vw, 48px); margin-top: 12px; }
+</style>

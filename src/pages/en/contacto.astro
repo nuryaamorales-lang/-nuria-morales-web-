@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const contacto = (await getCollection('contacto'))[0].data;
+---
+<BaseLayout
+  lang="en"
+  title="Let's talk"
+  description="Start a strategic conversation with Nuria Morales, strategic marketing consultant."
+>
+  <section class="section contacto" style="padding-top: 100px">
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">Let's talk</p>
+        <h1 class="display contacto__title">If you're looking for a strategic perspective to understand where you stand, spot opportunities and decide what to do next, let's talk.</h1>
+        <div class="contacto__links">
+          <a href={`mailto:${contacto.email}`}>{contacto.email}</a>
+          {contacto.linkedin && <a href={contacto.linkedin} target="_blank" rel="noopener">LinkedIn</a>}
+          {contacto.instagram && <a href={contacto.instagram} target="_blank" rel="noopener">Instagram</a>}
+        </div>
+      </div>
+      <form class="contacto__form" aria-label="Contact form">
+        <label class="label" for="nombre">Name</label>
+        <input id="nombre" name="nombre" type="text" required autocomplete="name" />
+
+        <label class="label" for="email-contacto">Email</label>
+        <input id="email-contacto" name="email" type="email" required autocomplete="email" />
+
+        <label class="label" for="mensaje">Tell me about your business</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Start a conversation →</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contacto__title { font-size: clamp(28px, 4.5vw, 44px); margin: 16px 0 40px; }
+  .contacto__links { display: flex; flex-direction: column; gap: 10px; }
+  .contacto__links a { text-decoration: none; font-family: var(--font-body); font-size: 15px; }
+  .contacto__form { display: flex; flex-direction: column; gap: 8px; }
+  .contacto__form input, .contacto__form textarea {
+    font-family: var(--font-body);
+    font-size: 16px;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid var(--dark);
+    background: transparent;
+    color-scheme: light;
+  }
+  .contacto__form input:focus, .contacto__form textarea:focus { outline: none; border-bottom-color: var(--gold); }
+  .contacto__form button { align-self: flex-start; background: none; border: none; border-bottom: 1px solid var(--dark); cursor: pointer; }
+</style>

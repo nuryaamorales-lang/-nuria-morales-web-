@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const fases = [
+  { n: '01', name: 'Entity', desc: 'How the brand is understood: what it is, what it does and for whom, unambiguously.' },
+  { n: '02', name: 'Search', desc: 'How the brand currently appears in traditional search.' },
+  { n: '03', name: 'AI Visibility', desc: 'How it appears — or could appear — in generative search environments.' },
+  { n: '04', name: 'Content', desc: 'What content the brand needs to be correctly cited and understood.' },
+  { n: '05', name: 'Technical', desc: 'How to improve crawling, structure and technical understanding of the site.' },
+  { n: '06', name: 'Authority', desc: 'What external signals and authority content support the brand entity.' },
+  { n: '07', name: 'Roadmap', desc: 'What to do over the next 90 days, prioritized by impact.' },
+];
+---
+<BaseLayout
+  lang="en"
+  title="AI Search Visibility"
+  description="How a brand can be discovered, understood and considered in the new AI-driven search environments. Nuria Morales' AI Search Visibility service."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <p class="eyebrow">Consulting · AI &amp; Search</p>
+      <h1 class="display" style="font-size: clamp(36px, 6vw, 64px); margin: 16px 0 24px">AI Search Visibility</h1>
+      <p style="max-width: 640px">Analyzing how a brand can be discovered, understood and considered in the new search environments driven by artificial intelligence. No guaranteed rankings promised in Google or AI systems — the work is on entity, content, technical structure and authority, in a verifiable way.</p>
+    </div>
+  </section>
+
+  <section class="section section--beige">
+    <div class="wrap">
+      {fases.map(f => (
+        <div class="fase-row">
+          <p class="eyebrow">{f.n}</p>
+          <h3 class="display fase-row__name">{f.name}</h3>
+          <p class="fase-row__desc">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">Do you know how an AI describes you today when someone asks about your industry?</p>
+      <a href="/en/contacto" class="btn btn--dark">Let's talk →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fase-row {
+    display: grid;
+    grid-template-columns: 60px 220px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding: 24px 0;
+    border-top: 1px solid rgba(44,44,44,0.15);
+  }
+  .fase-row:first-child { border-top: none; }
+  .fase-row__name { font-size: 22px; }
+  @media (max-width: 720px) {
+    .fase-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>

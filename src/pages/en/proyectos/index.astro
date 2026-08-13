@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+---
+<BaseLayout
+  lang="en"
+  title="Selected Work"
+  description="Projects, collaborations and strategic analysis by Nuria Morales, strategic marketing consultant."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Selected Work" title="Real projects. Not all of them are clients, and that's always indicated." />
+      <ProjectCard
+        href="/en/proyectos/sayumarketing"
+        title="Sayumarketing"
+        sector="Marketing agency"
+        type="Strategic Collaboration"
+        summary="From an agency with no consistent sales to its first two clients within the first month of work, by revisiting positioning, offer, pricing and commercial communication."
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const categories = ['Strategy', 'Branding', 'Growth', 'AI Search', 'Business', 'Hospitality'];
+const formatted = new Date('2026-08-01').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  lang="en"
+  title="Insights"
+  description="The Nuria Morales Strategic Journal — analysis on strategic marketing, business, branding, growth, AI and AI Search."
+>
+  <section class="section insights-hero">
+    <div class="wrap">
+      <p class="eyebrow">Insights</p>
+      <h1 class="display insights-hero__title">Analysis, not filler content.</h1>
+      <p class="insights-hero__territories">Strategy · Brand · Growth · AI Search</p>
+    </div>
+  </section>
+
+  <nav class="section insights-categories" aria-label="Insights categories">
+    <div class="wrap insights-categories__list">
+      {categories.map(cat => <span class="label insights-categories__item">{cat}</span>)}
+    </div>
+  </nav>
+
+  <section class="section featured">
+    <div class="wrap grid-2">
+      <div class="featured__image" aria-hidden="true"></div>
+      <div>
+        <p class="label featured__meta">Strategy · {formatted}</p>
+        <h2 class="display featured__title">Before doing more marketing, you need to understand the business better</h2>
+        <p class="featured__excerpt">Most brands don't have a content problem. They have a clarity problem about what they should be communicating and to whom.</p>
+        <a href="/en/insights/antes-de-hacer-mas-marketing" class="btn">Read article →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark pov">
+    <div class="wrap">
+      <p class="eyebrow">The Strategic POV</p>
+      <h2 class="display pov__title">Short thinking, no filler.</h2>
+      <p class="pov__empty">Coming soon — short pieces of strategic point of view.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .insights-hero { padding: 140px 0 40px; text-align: center; }
+  .insights-hero__title { font-size: clamp(32px, 5vw, 52px); margin: 16px 0 20px; }
+  .insights-hero__territories { font-family: var(--font-accent); letter-spacing: 0.1em; color: rgba(44,44,44,0.55); }
+
+  .insights-categories { padding: 0 0 40px; }
+  .insights-categories__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+  .insights-categories__item { color: rgba(44,44,44,0.55); }
+
+  .featured { padding-top: 0; }
+  .featured__image {
+    aspect-ratio: 4/3;
+    background: var(--beige);
+    border: 1px dashed rgba(44,44,44,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(44,44,44,0.45);
+  }
+  .featured__meta { color: var(--gold); margin-bottom: 12px; }
+  .featured__title { font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
+  .featured__excerpt { max-width: 480px; margin-bottom: 28px; }
+
+  .pov__title { font-size: clamp(26px, 4vw, 38px); margin: 12px 0 20px; color: var(--white); }
+  .pov__empty { font-style: italic; opacity: 0.65; }
+</style>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const fases = [
+  { n: '01', name: 'Understand', desc: 'Before any recommendation, I understand the business as it actually is: model, real customer, market and competitive context. You can\'t diagnose what you haven\'t understood first.', output: 'A clear map of where the business stands today.' },
+  { n: '02', name: 'Diagnose', desc: 'From that foundation, I identify the specific — not generic — friction points holding growth back: positioning, offer, pricing or communication. The symptom is almost never the cause.', output: 'The real problem, not the symptom disguising it.' },
+  { n: '03', name: 'Strategize', desc: 'With the diagnosis closed, I define positioning, priorities and strategic direction. This is where what to do, in what order and why gets decided — before touching any marketing action.', output: 'A clear direction, prioritized by impact.' },
+  { n: '04', name: 'Activate', desc: 'Only then does the strategy turn into actions, systems and marketing decisions that make sense. Execution isn\'t for the sake of movement — it\'s to generate results.', output: 'Measurable growth, not activity without direction.' },
+];
+---
+<BaseLayout
+  lang="en"
+  title="Methodology"
+  description="Understand, Diagnose, Strategize, Activate. Nuria Morales' own methodology for approaching every strategic consulting project."
+>
+  <section class="section" style="padding-top: 100px">
+    <div class="wrap">
+      <SectionHeading eyebrow="Proprietary methodology" title="A consulting system, not a list of services." />
+      <p style="max-width: 640px">Every project follows the same process, in the same order, regardless of industry. Not because the business gets simplified — but because skipping a step is, almost always, the reason marketing stops working. Each phase exists because the previous one makes it possible.</p>
+    </div>
+  </section>
+
+  {fases.map((f, i) => (
+    <section class={`section fase ${i % 2 === 0 ? '' : 'section--beige'}`}>
+      <div class="wrap grid-2">
+        <div>
+          <p class="eyebrow">{f.n}</p>
+          <h2 class="display fase__name">{f.name}</h2>
+        </div>
+        <div>
+          <p>{f.desc}</p>
+          <p class="fase__output">→ {f.output}</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section--dark final-cta">
+    <div class="wrap">
+      <p class="display" style="font-size: clamp(26px, 4vw, 40px); max-width: 720px; margin-bottom: 32px">Want to apply this methodology to your business?</p>
+      <a href="/en/contacto" class="btn btn--dark">Let's talk →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fase__name { font-size: clamp(32px, 5vw, 56px); margin-top: 12px; }
+  .fase__output {
+    margin-top: 16px;
+    font-family: var(--font-accent, 'Cinzel', serif);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+</style>
